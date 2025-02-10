@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Woodpecker";
+    font-style: normal;
+    src: url("./assets/fonts/Woodpecker.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Woodtrap";
+    font-style: normal;
+    src: url("./assets/fonts/Woodtrap.ttf") format("truetype");
+}
