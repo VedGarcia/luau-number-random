@@ -18,8 +18,8 @@ interface DecryptedTextProps {
 
 export default function DecryptedText({
     text,
-    speed = 50,
-    maxIterations = 40,
+    speed = 60,
+    maxIterations = 60,
     sequential = false,
     revealDirection = 'start',
     useOriginalCharsOnly = false,

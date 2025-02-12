@@ -9,6 +9,7 @@ import sortImage from "./assets/images/sort.webp";
 import start from "./assets/images/start.webp";
 import palmeras from "./assets/images/palmeras.png";
 import DecryptedText from "./TextAnimations/DecryptedText/DecryptedText";
+import Confetti from "react-confetti";
 
 const App: React.FC = () => {
   const [range, setRange] = useState<number[]>([]);
@@ -16,6 +17,7 @@ const App: React.FC = () => {
   const [input2, setInput2] = useState<number>(0);
   const [modal, setModal] = useState<boolean>(false);
   const [sort, setSort] = useState<number>(0);
+  const [celebrate, setCelebrate] = useState<boolean>(false);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -42,8 +44,16 @@ const App: React.FC = () => {
 
       setSort(newSort);
       setTimeout(() => {
-        setRange(prevRange => [...prevRange, newSort]);
-      }, 3000);
+        setCelebrate(true);
+      }, 4500);
+
+      setTimeout(() => {
+        setCelebrate(false);
+      }, 12000);
+
+      setTimeout(() => {
+        setRange((prevRange) => [...prevRange, newSort]);
+      }, 5000);
       return newSort;
     }
   };
@@ -51,6 +61,10 @@ const App: React.FC = () => {
   return (
     <>
       <main className="w-full h-screen bg-sky-950 grid grid-cols-5 grid-rows-4 overflow-hidden relative">
+        {celebrate && (
+          <Confetti className="absolute w-full h-full top-0 left-0" />
+        )}
+
         <img
           src={bgDegrade}
           alt="bg"
@@ -72,42 +86,46 @@ const App: React.FC = () => {
             <img
               src={thisTime}
               alt="Hora del"
-              className="w-72 aspect-auto absolute right-40 z-20"
+              className="hidden lg:block lg:w-72 aspect-auto lg:absolute lg:right-40 z-20"
             />
             <img
               src={sortImage}
               alt="sorteo"
-              className="w-[30rem] ml-52 my-4 aspect-auto"
+              className="hidden lg:block lg:w-[30rem] lg:ml-52 lg:my-4 aspect-auto"
             />
           </div>
         </aside>
-        <section className="col-span-3 row-span-5 col-start-2 flex flex-col w-full h-auto text-center relative">
+        <section className="col-span-3 row-span-5 col-start-2 grid place-content-center lg:flex lg:flex-col lg:w-full lg:h-auto text-center relative">
           <img src={Luau} alt="Luau" className="w-full absolute opacity-30" />
-          <button
-            className="w-96 m-auto animate-pulse hover:animate-none relative z-20 cursor-pointer"
+          { <button
+            className="w-64 absolute z-40 bottom-10 left-1/2 -translate-x-1/2 lg: lg:bottom-0 lg:left-0 lg:translate-x-0 lg:w-96 m-auto animate-pulse hover:animate-none lg:relative lg:z-20 cursor-pointer"
             onClick={handlerSort}
           >
-            <img src={start} alt="Start Luau" className="w-full aspect-auto" />
+            <img
+              src={start}
+              alt="Start Luau"
+              className="w-full aspect-auto m-auto"
+            />
           </button>
-
-          <div className="w-2/3 h-full m-auto relative z-20">
-            <p className="text-[200px] text-orange-800 font-bold drop-shadow-xl font-[woodpecker] tracking-wide">
-              <DecryptedText 
-              text={sort.toString()}
-              animateOn="view"
-              speed={100}
-              revealDirection='end'
-              maxIterations={30}
+}
+          <div className="w-screen h-screen m-auto relative z-20 grid place-content-center lg:place-content-start lg:justify-center lg:w-2/3 lg:h-full ">
+            <p className="text-[16rem] text-orange-800 font-bold drop-shadow-xl font-[woodpecker] tracking-wide leading-none">
+              <DecryptedText
+                text={sort.toString()}
+                animateOn="view"
+                speed={100}
+                revealDirection="end"
+                maxIterations={90}
               />
             </p>
-            {sort !== 0 ? (
+            {celebrate ? (
               <img
                 src={winner}
                 alt="winner"
-                className="w-96 aspect-auto animate-bounce duraction-800 m-auto"
+                className="w-96 lg:w-[40rem] aspect-auto animate-bounce duraction-800 left-1/2 -translate-x-1/2 absolute top-0 lg:translate-y-40"
               />
             ) : (
-              <p className="text-xl text-orange-600 font-semibold tracking-wide animate-pulse font-[woodtrap]">
+              <p className="text-sm mb-16 lg:mb-0 lg:text-xl text-orange-600 tracking-wide animate-pulse font-[woodtrap]">
                 agrega un rango y presiona el botón Comenzar
               </p>
             )}
