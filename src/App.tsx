@@ -115,7 +115,7 @@ const App: React.FC = () => {
                 animateOn="view"
                 speed={100}
                 revealDirection="end"
-                maxIterations={90}
+                maxIterations={45}
               />
             </p>
             {celebrate ? (
