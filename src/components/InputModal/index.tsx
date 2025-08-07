@@ -9,9 +9,8 @@ const ModalInput: React.FC<ModalInputProps> = ({ modal, toggleModal, handleInput
   return (
     <>
       {modal ? (
-        <div className="w-[80vw] h-auto lg:w-full lg:h-48 bg-sky-400/80 p-4 rounded-lg shadow-lg m-2 absolute left-1 top-1 z-50">
-          {/* X-mark */}
-          <button className="absolute top-4 right-4 cursor-pointer text-white" onClick={toggleModal}>
+        <div className="w-[80vw] h-auto lg:w-full lg:h-60 bg-sky-400/80 p-4 rounded-lg shadow-lg m-2 absolute left-1 top-1 z-50">
+          <button className="absolute top-4 right-4 cursor-pointer text-white" onClick={toggleModal} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -40,6 +39,7 @@ const ModalInput: React.FC<ModalInputProps> = ({ modal, toggleModal, handleInput
             className="w-full p-2 my-2 border border-gray-300 rounded-lg outline-none font-[woodtrap] text-white text-xl"
             onChange={handleInput2}
           />
+          <button className="w-24 p-1 my-2 border border-gray-300 text-white rounded-lg" onClick={toggleModal}>Ok</button>
         </div>
       ) : (
         <>

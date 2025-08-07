@@ -1,6 +1,6 @@
-// src/App.tsx
 import React, { useState } from "react";
 import Luau from "./components/Themes/Luau";
+import MegaDance from "./components/Themes/MegaDance";
 import Menu from "./components/Menu";
 
 const App: React.FC = () => {
@@ -52,24 +52,34 @@ const App: React.FC = () => {
   };
 
   const renderContent = () => {
-    if (theme === "luau") {
-      return (
-        <Luau
-          range={range}
-          input1={input1}
-          input2={input2}
-          modal={modal}
-          sort={sort}
-          celebrate={celebrate}
-          toggleModal={toggleModal}
-          handleInput1={handleInput1}
-          handleInput2={handleInput2}
-          handlerSort={handlerSort}
-        />
-      );
+    switch (theme) {
+      case "luau":
+        return (
+          <Luau
+            range={range}
+            input1={input1}
+            input2={input2}
+            modal={modal}
+            sort={sort}
+            celebrate={celebrate}
+            toggleModal={toggleModal}
+            handleInput1={handleInput1}
+            handleInput2={handleInput2}
+            handlerSort={handlerSort}
+            theme={setTheme}
+          />
+        );
+      case "mega-dance":
+         return (
+          <MegaDance
+            
+            theme={setTheme}
+          />
+        );
+
+      case null:
+        return <Menu onSelectTheme={setTheme} />;
     }
-    // Si se agrega otro tema, aquí podrías tener un `else if` o un `switch`
-    return <Menu onSelectTheme={setTheme} />;
   };
 
   return <>{renderContent()}</>;
