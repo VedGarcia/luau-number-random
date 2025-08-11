@@ -29,7 +29,6 @@ theme: (theme: string | null) => void;
 
 const Luau: React.FC<LuauThemeProps> = ({
   range,
- 
   modal,
   sort,
   celebrate,

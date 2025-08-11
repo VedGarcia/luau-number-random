@@ -73,6 +73,14 @@ const App: React.FC = () => {
          return (
           <MegaDance
             theme={setTheme}
+            range={range}
+            modal={modal}
+            sort={sort}
+            celebrate={celebrate}
+            toggleModal={toggleModal}
+            handleInput1={handleInput1}
+            handleInput2={handleInput2}
+            handlerSort={handlerSort}
           />
         );
 

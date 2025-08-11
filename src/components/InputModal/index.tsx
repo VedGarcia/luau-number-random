@@ -9,7 +9,7 @@ const ModalInput: React.FC<ModalInputProps> = ({ modal, toggleModal, handleInput
   return (
     <>
       {modal ? (
-        <div className="w-[80vw] h-auto lg:w-full lg:h-60 bg-sky-400/80 p-4 rounded-lg shadow-lg m-2 absolute left-1 top-1 z-50">
+        <div className="w-[80vw] h-auto lg:w-60 lg:h-60 bg-sky-400/30 p-4 rounded-lg shadow-lg m-2 absolute left-1 top-1 z-50">
           <button className="absolute top-4 right-4 cursor-pointer text-white" onClick={toggleModal} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,19 +24,19 @@ const ModalInput: React.FC<ModalInputProps> = ({ modal, toggleModal, handleInput
               />
             </svg>
           </button>
-          <h4 className="text-center text-4xl font-[woodtrap] text-white">Rango</h4>
+          <h4 className="text-center text-4xl text-white">Rango</h4>
           <input
             type="number"
             placeholder="max"
             pattern="[0-9]+"
-            className="w-full p-2 my-2 border border-gray-300 rounded-lg outline-none font-[woodtrap] text-white text-xl"
+            className="w-full p-2 my-2 border border-gray-300 rounded-lg outline-none  text-white text-xl"
             onChange={handleInput1}
           />
           <input
             placeholder="min"
             type="number"
             pattern="[0-9]+"
-            className="w-full p-2 my-2 border border-gray-300 rounded-lg outline-none font-[woodtrap] text-white text-xl"
+            className="w-full p-2 my-2 border border-gray-300 rounded-lg outline-none text-white text-xl"
             onChange={handleInput2}
           />
           <button className="w-24 p-1 my-2 border border-gray-300 text-white rounded-lg" onClick={toggleModal}>Ok</button>
@@ -45,7 +45,7 @@ const ModalInput: React.FC<ModalInputProps> = ({ modal, toggleModal, handleInput
         <>
           <button
             onClick={toggleModal}
-            className="absolute left-4 top-4 text-teal-400 cursor-pointer z-50"
+            className="absolute left-4 top-4 text-blue-300/60 cursor-pointer z-50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
