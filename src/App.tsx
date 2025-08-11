@@ -72,7 +72,6 @@ const App: React.FC = () => {
       case "mega-dance":
          return (
           <MegaDance
-            
             theme={setTheme}
           />
         );
