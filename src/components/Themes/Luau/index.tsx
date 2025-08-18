@@ -15,6 +15,7 @@ import Confetti from "react-confetti";
 
 interface LuauThemeProps {
   range: number[];
+  setRange: React.Dispatch<React.SetStateAction<number[]>>;
   input1: number;
   input2: number;
   modal: boolean;
@@ -29,6 +30,7 @@ theme: (theme: string | null) => void;
 
 const Luau: React.FC<LuauThemeProps> = ({
   range,
+  setRange,
   modal,
   sort,
   celebrate,
@@ -110,7 +112,7 @@ const Luau: React.FC<LuauThemeProps> = ({
         </div>
       </section>
       <Winners range={range} />
-      <button className="absolute bottom-4 right-4 p-2 rounded-lg" onClick={() => theme(null)}><img src={FJUbuttom} alt="FJU" /></button>
+      <button className="absolute bottom-4 right-4 p-2 rounded-lg" onClick={() => {theme(null); setRange([])}}><img src={FJUbuttom} alt="FJU" /></button>
     </main>
   );
 };

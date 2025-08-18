@@ -1,5 +1,6 @@
 // src/components/LuauTheme.tsx
 import React from 'react';
+import Confetti from "react-confetti";
 import MegaDanceLogo from "../../../assets/images/mega-dance/logo-mega-dance.webp";
 import BGMegaDance from "../../../assets/images/mega-dance/bgmd.webp";
 import FJUbuttom from "../../../assets/images/fju/iconFJU.png";
@@ -8,9 +9,11 @@ import DecryptedText from "../../../TextAnimations/DecryptedText/DecryptedText";
 import start from "../../../assets/images/mega-dance/start.webp";
 import Winners from "../../Winner";
 
+
 // --- Interfaces y tipos ---
 interface MegaDanceProps {
   range: number[];
+  setRange: React.Dispatch<React.SetStateAction<number[]>>;
   modal: boolean;
   sort: number;
   celebrate: boolean;
@@ -24,6 +27,7 @@ interface MegaDanceProps {
 // --- Componente Principal ---
 const MegaDance: React.FC<MegaDanceProps> = ({
   range,
+  setRange,
   modal,
   sort,
   celebrate,
@@ -56,8 +60,15 @@ const MegaDance: React.FC<MegaDanceProps> = ({
         {/* === COLUMNA CENTRAL: Número Sorteado y Acción === */}
         <section className="relative z-20 w-full lg:w-2/4 p-4 flex flex-col items-center justify-center">
           <div className="relative flex flex-col items-center justify-center">
+           
+            <img
+                  src={MegaDanceLogo}
+                  alt="winner"
+                  className="w-96 "
+                />
             {/* Contenedor del número para mantener el espacio */}
-            <div className="h-[260px] flex items-center justify-center">
+
+            <div className={`${range.length === 0? 'hidden': 'flex'} not-visited:h-[260px] items-center justify-center`}>
               <p className={`text-[16rem] ${celebrate ? 'animate-ping': 'animate-none' } text-violet-600 font-bold drop-shadow-xl tracking-wide leading-none`}>
                 <DecryptedText
                   text={sort.toString()}
@@ -73,11 +84,8 @@ const MegaDance: React.FC<MegaDanceProps> = ({
             {celebrate ? (
               <>
                 {/* 1. La imagen del logo se sigue mostrando como antes */}
-                <img
-                  src={MegaDanceLogo}
-                  alt="winner"
-                  className="w-96 animate-bounce duration-800 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                />
+                <Confetti className="absolute w-full h-full top-0 left-0" />
+               
                 {/* 2. Este es el marcador de posición invisible. Ocupa el mismo espacio que el párrafo. */}
                 <div className="mt-4 h-7" aria-hidden="true"></div>
               </>
@@ -97,7 +105,7 @@ const MegaDance: React.FC<MegaDanceProps> = ({
         </section>
 
         {/* === COLUMNA DERECHA: Ganadores === */}
-        <aside className="w-full lg:w-1/4 p-4 flex flex-col items-center">
+        <aside className={`hidden md:flex w-full lg:w-1/4 p-4 flex-col items-center transition-opacity duration-500 ease-in-out ${range.length === 0 ? 'opacity-0' : 'opacity-100'}`}>
           <div className="w-full">
             <Winners range={range} />
           </div>
@@ -107,7 +115,10 @@ const MegaDance: React.FC<MegaDanceProps> = ({
       {/* Botón para cambiar de tema */}
       <button
         className="absolute bottom-4 right-4 p-2 rounded-lg z-50 cursor-pointer transition-transform duration-300 hover:scale-110"
-        onClick={() => theme(null)}
+        onClick={() => {
+          theme(null); 
+          setRange([])
+        }}
       >
         <img src={FJUbuttom} alt="FJU" className="w-12 h-12" />
       </button>

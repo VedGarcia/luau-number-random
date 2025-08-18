@@ -57,6 +57,7 @@ const App: React.FC = () => {
         return (
           <Luau
             range={range}
+            setRange={setRange}
             input1={input1}
             input2={input2}
             modal={modal}
@@ -74,6 +75,7 @@ const App: React.FC = () => {
           <MegaDance
             theme={setTheme}
             range={range}
+            setRange={setRange}
             modal={modal}
             sort={sort}
             celebrate={celebrate}
