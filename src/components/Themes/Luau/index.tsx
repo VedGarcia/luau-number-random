@@ -25,7 +25,7 @@ interface LuauThemeProps {
   handleInput1: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleInput2: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlerSort: () => void;
-theme: (theme: string | null) => void;
+  theme: (theme: string | null) => void;
 }
 
 const Luau: React.FC<LuauThemeProps> = ({
@@ -38,7 +38,7 @@ const Luau: React.FC<LuauThemeProps> = ({
   handleInput1,
   handleInput2,
   handlerSort,
-  theme
+  theme,
 }) => {
   return (
     <main className="w-full h-screen bg-sky-950 grid grid-cols-5 grid-rows-4 overflow-hidden relative">
@@ -111,8 +111,23 @@ const Luau: React.FC<LuauThemeProps> = ({
           )}
         </div>
       </section>
-      <Winners range={range} />
-      <button className="absolute bottom-4 right-4 p-2 rounded-lg" onClick={() => {theme(null); setRange([])}}><img src={FJUbuttom} alt="FJU" /></button>
+      
+      {/* SECCIÓN CORREGIDA */}
+      <aside className={`hidden md:flex col-start-5 row-span-5 p-4 flex-col items-center transition-opacity duration-500 ease-in-out ${range.length === 0 ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="w-full">
+          <Winners range={range} />
+        </div>
+      </aside>
+
+      <button
+        className="absolute bottom-4 right-4 p-2 rounded-lg"
+        onClick={() => {
+          theme(null);
+          setRange([]);
+        }}
+      >
+        <img src={FJUbuttom} alt="FJU" />
+      </button>
     </main>
   );
 };

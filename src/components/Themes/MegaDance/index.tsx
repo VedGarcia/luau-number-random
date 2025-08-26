@@ -38,7 +38,7 @@ const MegaDance: React.FC<MegaDanceProps> = ({
   theme
 }) => {
   return (
-    <main className="relative flex flex-col items-center justify-center min-h-screen p-4 overflow-hidden text-center bg-linear-to-tr from-stone-800 via-black to-violet-950">
+    <main className="relative flex flex-col items-center justify-center h-screen p-4 overflow-hidden text-center bg-linear-to-tr from-stone-800 via-black to-violet-950">
       {/* Imagen de fondo con opacidad */}
       <div
         style={{ backgroundImage: `url(${BGMegaDance})` }}
@@ -80,7 +80,6 @@ const MegaDance: React.FC<MegaDanceProps> = ({
               </p>
             </div>
 
-            {/* --- INICIO DE LA MODIFICACIÓN --- */}
             {celebrate ? (
               <>
                 {/* 1. La imagen del logo se sigue mostrando como antes */}

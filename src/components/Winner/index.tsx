@@ -9,7 +9,7 @@ const Winners: React.FC<WinnersProps> = ({ range }) => {
     // He eliminado las clases de grid (row-span-3, col-start-5) para que el componente sea más reutilizable.
     // Puedes volver a añadirlas si son específicas de tu layout principal.
     <aside className="w-full p-4 md:p-10 relative z-30">
-      <h4 className="text-white text-4xl md:text-6xl my-4 -translate-x-4 drop-shadow-xl">
+      <h4 className="text-white text-3xl md:text-5xl my-4 -translate-x-4 drop-shadow-xl">
         Ganadores
       </h4>
       {/* Se han eliminado las clases "overflow-auto", "h-full", "snap-y", y "snap-mandatory"
